@@ -1,2 +1,3 @@
 #!/bin/bash
 scalac "P$1".scala && scala "P$1"
+rm "P$1"*.class "P$1".tasty
