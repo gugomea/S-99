@@ -1,0 +1,2 @@
+#!/bin/bash
+scalac "P$1".scala && scala "P$1"
