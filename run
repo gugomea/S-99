@@ -1,3 +1,16 @@
 #!/bin/bash
-scalac "P$1".scala && scala "P$1"
-rm "P$1"*.class "P$1".tasty
+num_args="$#"
+
+modified_string="scalac"
+
+for ((i=1; i<=num_args; i++)); do
+  arg="${!i}"
+
+  modified_string="${modified_string} P${arg}.scala"
+  if [ "$i" -eq "$num_args" ]; then
+    modified_string="${modified_string} && scala P${arg}"
+  fi
+done
+
+eval "$modified_string"
+rm -f *.class *.tasty
